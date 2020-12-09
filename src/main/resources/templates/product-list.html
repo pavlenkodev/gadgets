@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Products</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+</head>
+<body>
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+    <h5 class="my-0 mr-md-auto font-weight-normal">Gadgets</h5>
+    <nav class="my-2 my-md-0 mr-md-3">
+        <a class="p-2 text-dark" href="/product-create">Add new product</a>
+        <a class="p-2 text-dark" href="/product-filter">Filter</a>
+    </nav>
+</div>
+<div th:switch="${products}">
+    <h2 th:case="null">No products found!</h2>
+    <div th:case="*">
+        <div class="container">
+            <div class="card">
+                <div class="card-block">
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th>image</th>
+                            <th>Name</th>
+                            <th>Vendor</th>
+                            <th>Category</th>
+                            <th>Price</th>
+                            <th>RAM</th>
+                            <th>CPU</th>
+                            <th>Cores</th>
+                            <th>Storage</th>
+                            <th>Description</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="product : ${products}">
+                            <td th:hidden="${product.id}"></td>
+                            <td th:text="${product.image}"></td>
+                            <td th:text="${product.name}"></td>
+                            <td th:text="${product.vendor}"></td>
+                            <td th:text="${product.category}"></td>
+                            <td th:text="${product.price}"></td>
+                            <td th:text="${product.ram}"></td>
+                            <td th:text="${product.cores}"></td>
+                            <td th:text="${product.cpu}"></td>
+                            <td th:text="${product.storage}"></td>
+                            <td th:text="${product.descriptionId}"></td>
+                            <td><a th:href="@{product-update/{id}(id=${product.id})}">Edit</a></td>
+                            <td><a th:href="@{product-delete/{id}(id=${product.id})}">Delete</a></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

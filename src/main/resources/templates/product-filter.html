@@ -1,0 +1,96 @@
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<div class="container mt-3"></div>
+<body xmlns:th="http://www.w3.org/1999/xhtml">
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+    <h5 class="my-0 mr-md-auto font-weight-normal">Choose parameters</h5>
+    <nav class="my-2 my-md-0 mr-md-3">
+        <a class="p-2 text-dark" href="/products">Main</a>
+        <a class="p-2 text-dark" href="/description-create">Create new description</a>
+        <a class="p-2 text-dark" href="/product-create">Back to creating product</a>
+    </nav>
+</div>
+<!--<table class="table table-hover">-->
+<!--    <form action="#" th:action="@{/product-filter}" th:object="${product}" method="post">-->
+<!--        <label for="name">Name</label>-->
+<!--        <input type="text" th:field="*{name}" id="name" placeholder="add name">-->
+
+<!--        <label for="vendor">Vendor</label>-->
+<!--        <input type="text" th:field="*{vendor}" id="vendor" placeholder="add vendor">-->
+
+<!--        <label for="category">Category</label>-->
+<!--        <input type="text" th:field="*{category}" id="category" placeholder="add category">-->
+
+<!--        <label for="minPrice">min Price</label>-->
+<!--        <input type="text" th:field="*{minPrice}" id="minPrice" placeholder="add price">-->
+
+<!--        <label for="maxPrice">max Price</label>-->
+<!--        <input type="text" th:field="*{maxPrice}" id="maxPrice" placeholder="add price">-->
+
+<!--        <label for="minRam">RAM</label>-->
+<!--        <input type="text" th:field="*{minRam}" id="minRam" placeholder="add RAM">-->
+
+<!--        <label for="maxRam">maxRAM</label>-->
+<!--        <input type="text" th:field="*{maxRam}" id="maxRam" placeholder="add RAM">-->
+
+<!--        <label for="cpu">CPU</label>-->
+<!--        <input type="text" th:field="*{cpu}" id="cpu" placeholder="add CPU">-->
+
+
+<!--        <label for="minStorage">Storage</label>-->
+<!--        <input type="text" th:field="*{minStorage}" id="minStorage" placeholder="add storage">-->
+
+<!--        <label for="maxStorage">maxStroga</label>-->
+<!--        <input type="text" th:field="*{maxStorage}" id="maxStorage" placeholder="add RAM">-->
+
+<!--        <input type="submit" value="Search">-->
+<!--    </form>-->
+
+</table>
+<div class="container mt-2">
+    <div th:switch="${filters}">
+        <h2 th:case="null">No products found!</h2>
+        <div th:case="*">
+            <div class="container">
+                <div class="card">
+                    <div class="card-block">
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Vendor</th>
+                                <th>Category</th>
+                                <th>Price</th>
+                                <th>RAM</th>
+                                <th>CPU</th>
+                                <th>Cores</th>
+                                <th>Storage</th>
+                                <th>Description</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="filter : ${filters}">
+                                <td th:hidden="${filter.id}"></td>
+                                <td th:text="${filter.name}"></td>
+                                <td th:text="${filter.vendor}"></td>
+                                <td th:text="${filter.category}"></td>
+                                <td th:text="${filter.price}"></td>
+                                <td th:text="${filter.ram}"></td>
+                                <td th:text="${filter.cpu}"></td>
+                                <td th:text="${filter.cores}"></td>
+                                <td th:text="${filter.storage}"></td>
+                                <td th:text="${filter.descriptionId}"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

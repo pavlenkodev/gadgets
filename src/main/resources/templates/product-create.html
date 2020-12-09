@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Create product</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+</head>
+<body>
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+    <h5 class="my-0 mr-md-auto font-weight-normal">Add new product</h5>
+    <nav class="my-2 my-md-0 mr-md-3">
+        <a class="p-2 text-dark" href="/products">Main</a>
+    </nav>
+</div>
+<div class="card">
+    <div class="card-block">
+        <table class="table table-hover">
+            <form action="#" th:action="@{/product-create}" th:object="${product}" method="post">
+                <label for="image">Image</label>
+                <input type="text" th:field="*{image}" id="image" placeholder="add link for product image">
+                <label for="name">Name</label>
+                <input type="text" th:field="*{name}" id="name" placeholder="add product name">
+                <label for="vendor">Vendor</label>
+                <input type="text" th:field="*{vendor}" id="vendor" placeholder="add vendor">
+                <label for="price">Category</label>
+                <input type="text" th:field="*{category}" id="category" placeholder="add category">
+                <label for="price">Price</label>
+                <input type="text" th:field="*{price}" id="price" placeholder="add price">
+                <label for="ram">RAM</label>
+                <input type="text" th:field="*{ram}" id="ram" placeholder="add RAM">
+                <label for="cpu">CPU</label>
+                <input type="text" th:field="*{cpu}" id="cpu" placeholder="add CPU">
+                <label for="cores">Cores</label>
+                <input type="text" th:field="*{cores}" id="cores" placeholder="add number of cores">
+                <label for="storage">Storage</label>
+                <input type="text" th:field="*{storage}" id="storage" placeholder="add storage">
+                <label for="descriptionId">Description</label>
+                <input type="text" th:field="*{descriptionId}" id="descriptionId" placeholder="descriptionId">
+                <input type="submit" value="Create Product">
+                <a class="p-2 text-dark" href="/description-create">Create description for this product</a>
+            </form>
+        </table>
+    </div>
+</div>
+</div>
+</body>
+</html>

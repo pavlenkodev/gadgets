@@ -1,0 +1,55 @@
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<div class="container mt-3"></div>
+<body xmlns:th="http://www.w3.org/1999/xhtml">
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+    <h5 class="my-0 mr-md-auto font-weight-normal">Descriptions</h5>
+    <nav class="my-2 my-md-0 mr-md-3">
+        <a class="p-2 text-dark" href="/products">Main</a>
+        <a class="p-2 text-dark" href="/description-create">Create new description</a>
+        <a class="p-2 text-dark" href="/product-create">Back to creating product</a>
+    </nav>
+</div>
+<div class="container mt-2">
+    <div th:switch="${descriptions}">
+        <h2 th:case="null">No descriptions found!</h2>
+        <div th:case="*">
+            <div class="container">
+                <div class="card">
+                    <div class="card-block">
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th>Identificator</th>
+                                <th>OS</th>
+                                <th>Color</th>
+                                <th>Model</th>
+                                <th>Diagonal</th>
+                                <th>Resolution</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="description : ${descriptions}">
+                                <td th:text="${description.id}"></td>
+                                <td th:text="${description.operationSystem}"></td>
+                                <td th:text="${description.color}"></td>
+                                <td th:text="${description.model}"></td>
+                                <td th:text="${description.screenSize}"></td>
+                                <td th:text="${description.resolution}"></td>
+                                <td><a th:href="@{description-update/{id}(id=${description.id})}">Edit</a></td>
+                                <td><a th:href="@{description-delete/{id}(id=${description.id})}">Delete</a></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+
