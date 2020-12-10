@@ -2,11 +2,13 @@ package tech.itpark.marketplace.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.data.repository.query.Param;
 import tech.itpark.marketplace.model.Product;
 
 import java.util.List;
 
+@EnableJpaRepositories
 public interface ProductRepository extends JpaRepository<Product, Long> {
 
     @Query
@@ -22,22 +24,7 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
                          @Param("maxStorage") int maxStorage
     );
 
-
-//    List<Product> findByCategoryContainingIgnoreCaseAndVendorContainingIgnoreCaseAndPriceLessThanEqualAndPriceGreaterThanEqualAndRamLessThanEqualAndRamGreaterThanEqualAndCpuContainingIgnoreCaseAndStorageLessThanEqualAndStorageGreaterThanEqual(
-//            String category,
-//            String vendor,
-//            int minPrice,
-//            int maxPrice,
-//            int minRam,
-//            int maxRam,
-//            String cpu,
-//            int minStorage,
-//            int maxStorage
-//    );
-
     List<Product> findByCategory(String category);
 
     List<Product> findByNameContainingIgnoreCase(String name);
-
-//    Product findByDescriptionId(Product product);
 }
