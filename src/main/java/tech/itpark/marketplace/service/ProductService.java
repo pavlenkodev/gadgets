@@ -97,6 +97,9 @@ public class ProductService {
                                 String cpu,
                                 int minStorage,
                                 int maxStorage) {
+        category = category.toLowerCase();
+        vendor = vendor.toLowerCase();
+        cpu = cpu.toLowerCase();
         return productRepository.filter(category, vendor, minPrice, maxPrice, minRam, maxRam, cpu, minStorage, maxStorage);
     }
 

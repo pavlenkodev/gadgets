@@ -10,7 +10,7 @@ import java.util.List;
 public interface ProductRepository extends JpaRepository<Product, Long> {
 
     @Query
-            ("select p from Product p where p.category  = :category and p.vendor = :vendor and p.price between :minPrice and :maxPrice and p.ram between :minRam and :maxRam and p.cpu = :cpu and p.storage between :minStorage and :maxStorage")
+            ("select p from Product p where lower(p.category)  = :category and lower(p.vendor) = :vendor and p.price between :minPrice and :maxPrice and p.ram between :minRam and :maxRam and lower(p.cpu) = :cpu and p.storage between :minStorage and :maxStorage")
     List<Product> filter(@Param("category") String category,
                          @Param("vendor") String vendor,
                          @Param("minPrice") int minPrice,
@@ -22,9 +22,22 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
                          @Param("maxStorage") int maxStorage
     );
 
+
+//    List<Product> findByCategoryContainingIgnoreCaseAndVendorContainingIgnoreCaseAndPriceLessThanEqualAndPriceGreaterThanEqualAndRamLessThanEqualAndRamGreaterThanEqualAndCpuContainingIgnoreCaseAndStorageLessThanEqualAndStorageGreaterThanEqual(
+//            String category,
+//            String vendor,
+//            int minPrice,
+//            int maxPrice,
+//            int minRam,
+//            int maxRam,
+//            String cpu,
+//            int minStorage,
+//            int maxStorage
+//    );
+
     List<Product> findByCategory(String category);
 
     List<Product> findByNameContainingIgnoreCase(String name);
 
-    Product findByDescriptionId(Product product);
+//    Product findByDescriptionId(Product product);
 }
