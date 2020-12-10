@@ -56,12 +56,20 @@ public class ProductController {
         productService.save(product);
         return "redirect:/products";
     }
-    @PostMapping("/product-filter")
-    public String filterForm(Product product){
-        return ("/product-filter");
-    }
 
-    @GetMapping("/product-filter")
+//    @GetMapping("/filter-form")
+//    public String filterForm(@RequestParam String fcategory,
+//                             @RequestParam String fendor,
+//                             @RequestParam int minPrice,
+//                             @RequestParam int maxPrice,
+//                             @RequestParam int minRam,
+//                             @RequestParam int maxRam,
+//                             @RequestParam String cpu,
+//                             @RequestParam int minStorage){
+//        return ("/filter-form");
+//    }
+
+    @PostMapping("/product-filter")
     public String filter(@RequestParam String category,
                          @RequestParam String vendor,
                          @RequestParam int minPrice,
@@ -73,10 +81,50 @@ public class ProductController {
                          @RequestParam int maxStorage,
                          Model model
     ) {
+
         final var filters = productService.filter(category, vendor, minPrice, maxPrice, minRam, maxRam, cpu, minStorage, maxStorage);
         model.addAttribute("filters", filters);
+
+//       model.addAttribute("filters", filters);
+//          filters = .productService.findAll();
         return "/product-filter";
     }
+
+    @GetMapping("/category-smartphones")
+    public String findByCategorySmartphones(String category, Model model) {
+        category = "smartphones";
+        final var byCategory = productService.findByCategory(category);
+        model.addAttribute("byCategory", byCategory);
+
+        return "/category-smartphones";
+    }
+
+    @GetMapping("/category-tablets")
+    public String findByCategoryTablets(String category, Model model) {
+        category = "tablets";
+        final var byCategory = productService.findByCategory(category);
+        model.addAttribute("byCategory", byCategory);
+
+        return "/category-tablets";
+
+    }
+
+    @PostMapping("/search-by-name")
+    public String searchByName(@RequestParam String name, Model model) {
+        var byNameIgnoreCase = productService.findByNameIgnoreCase(name);
+        model.addAttribute("byNameIgnoreCase", byNameIgnoreCase);
+        return "/search-by-name";
+    }
+
+    @GetMapping("/category-laptops")
+    public String findByCategoryLaptops(String category, Model model) {
+        category = "laptops";
+        final var byCategory = productService.findByCategory(category);
+        model.addAttribute("byCategory", byCategory);
+
+        return "/category-laptops";
+    }
+
 
     @GetMapping("product-delete/{id}")
     public String removeById(@PathVariable("id") Long id) {

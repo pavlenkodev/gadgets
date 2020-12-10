@@ -12,7 +12,7 @@
     </nav>
 </div>
 <div class="container mt-2">
-    <div th:switch="${filters}">
+    <div th:switch="${byNameIgnoreCase}">
         <h2 th:case="null">Ничего не найдено!</h2>
         <div th:case="*">
             <div class="container">
@@ -34,18 +34,18 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr th:each="filter : ${filters}">
-                                <td th:hidden="${filter.id}"></td>
-                                <td th:image="${filter.image}"></td>
-                                <td th:text="${filter.name}"></td>
-                                <td th:text="${filter.vendor}"></td>
-                                <td th:text="${filter.category}"></td>
-                                <td th:text="${filter.price}"></td>
-                                <td th:text="${filter.ram}"></td>
-                                <td th:text="${filter.cpu}"></td>
-                                <td th:text="${filter.cores}"></td>
-                                <td th:text="${filter.storage}"></td>
-                                <td th:text="${filter.descriptionId}"></td>
+                            <tr th:each="byName : ${byNameIgnoreCase}">
+                                <td th:hidden="${byName.id}"></td>
+                                <td th:image="${byName.image}"></td>
+                                <td th:text="${byName.name}"></td>
+                                <td th:text="${byName.vendor}"></td>
+                                <td th:text="${byName.category}"></td>
+                                <td th:text="${byName.price}"></td>
+                                <td th:text="${byName.ram}"></td>
+                                <td th:text="${byName.cpu}"></td>
+                                <td th:text="${byName.cores}"></td>
+                                <td th:text="${byName.storage}"></td>
+                                <td th:text="${byName.descriptionId}"></td>
                             </tr>
                             </tbody>
                         </table>
