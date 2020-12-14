@@ -12,7 +12,7 @@ import java.util.List;
 public interface ProductRepository extends JpaRepository<Product, Long> {
 
     @Query
-            ("select p from Product p where lower(p.category)  = :category and lower(p.vendor) = :vendor and p.price between :minPrice and :maxPrice and p.ram between :minRam and :maxRam and lower(p.cpu) = :cpu and p.storage between :minStorage and :maxStorage")
+            ("select p from Product p where lower(p.category) = :category and lower(p.vendor) = :vendor and p.price between :minPrice and :maxPrice and p.ram between :minRam and :maxRam and lower(p.cpu) = :cpu and p.storage between :minStorage and :maxStorage")
     List<Product> filter(@Param("category") String category,
                          @Param("vendor") String vendor,
                          @Param("minPrice") int minPrice,
@@ -27,4 +27,6 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     List<Product> findByCategory(String category);
 
     List<Product> findByNameContainingIgnoreCase(String name);
+
+//    Product descr()
 }

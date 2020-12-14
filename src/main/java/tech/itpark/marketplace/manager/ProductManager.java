@@ -1,20 +1,17 @@
-package tech.itpark.marketplace.service;
+package tech.itpark.marketplace.manager;
 
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-import tech.itpark.marketplace.model.Description;
 import tech.itpark.marketplace.model.Product;
 import tech.itpark.marketplace.repository.ProductRepository;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class ProductService {
+public class ProductManager {
     private final ProductRepository productRepository;
 
     //    @Autowired
-    public ProductService(ProductRepository productRepository) {
+    public ProductManager(ProductRepository productRepository) {
         this.productRepository = productRepository;
     }
 

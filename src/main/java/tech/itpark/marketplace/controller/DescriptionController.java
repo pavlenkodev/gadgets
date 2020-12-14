@@ -6,34 +6,34 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import tech.itpark.marketplace.model.Description;
-import tech.itpark.marketplace.service.DescriptionService;
+import tech.itpark.marketplace.manager.DescriptionManager;
 
 @Controller
 public class DescriptionController {
 
-    private final DescriptionService descriptionService;
+    private final DescriptionManager descriptionManager;
 
-    public DescriptionController(DescriptionService descriptionService) {
-        this.descriptionService = descriptionService;
+    public DescriptionController(DescriptionManager descriptionManager) {
+        this.descriptionManager = descriptionManager;
     }
 
     @GetMapping("/descriptions")
     public String findAll(Model model){
-        final var descriptions = descriptionService.findAll();
+        final var descriptions = descriptionManager.findAll();
         model.addAttribute("descriptions", descriptions);
-        return "description-list";
+        return "description/description-list";
 
     }
 
     @GetMapping("/description-create")
     public String createDescriptionForm(Description description) {
-        return "description-create";
+        return "description/description-create";
     }
 
     @PostMapping("/description-create")
     public String createDescription(Description description) {
-        descriptionService.save(description);
-        return "redirect:/descriptions";    // ??????
+        descriptionManager.save(description);
+        return "redirect:/descriptions";
     }
 
     @GetMapping("/description-update/{id}")
@@ -41,19 +41,19 @@ public class DescriptionController {
             @PathVariable("id") Long id,
             Model model
     ){
-        Description description = descriptionService.findById(id); ////???????warn??????
+        Description description = descriptionManager.findById(id); ////???????warn??????
         model.addAttribute("description", description);
-        return "/description-update";
+        return "description/description-update";
     }
     @PostMapping("/description-update")
     public String updateDescription (Description description){
-        descriptionService.save(description);
+        descriptionManager.save(description);
         return "redirect:/descriptions";   ///???????
      }
 
     @GetMapping("description-delete/{id}")
     public String removeById(@PathVariable("id") Long id) {
-        descriptionService.removeById(id);
+        descriptionManager.removeById(id);
         return "redirect:/descriptions";
     }
 

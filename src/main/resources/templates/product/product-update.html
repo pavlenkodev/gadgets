@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<meta charset="UTF-8">
+<title>Update product</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+</head>
+<body>
+<div>
+    <nav class="navbar navbar-expand-lg navbar navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/products">Gadgets</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/category-laptops">Ноутбуки</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/category-smartphones">Смартфоны</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/category-tablets">Планшеты</a>
+                    </li>
+                </ul>
+                <form class="d-flex" method="post" action="/search-by-name">
+                    <input class="form-control me-2" type="text" name="name" placeholder="Искать по названию"
+                           aria-label="Search">
+                    <button class="btn btn-outline-dark" type="submit">Поиск</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+</div>
+<form action="#" th:action="@{/product-update}" th:object="${product}" method="post">
+    <div class="container mt-3">
+        <div class="col-lg">
+            <div class="mb-1">
+                <label for="id" class="form-label">Номер</label>
+                <input readonly type="number" class="form-control" th:field="*{id}" id="id">
+            </div>
+            <div class="col-lg">
+                <div class="mb-1">
+                    <label for="image" class="form-label">Изображение</label>
+                    <input type="text" class="form-control" th:field="*{image}" id="image"
+                           placeholder="Добавте ссылку на изображение продукта">
+                </div>
+            </div>
+            <div class="col-lg">
+                <div class="mb-1">
+                    <label for="name" class="form-label">Название</label>
+                    <input type="text" class="form-control" th:field="*{name}" id="name"
+                           placeholder="Введите название продукта">
+                </div>
+            </div>
+            <div class="col-lg">
+                <div class="mb-1">
+                    <label for="vendor" class="form-label">Брэнд</label>
+                    <input type="text" class="form-control" th:field="*{vendor}" id="vendor"
+                           placeholder="Введите брэнд">
+                </div>
+            </div>
+            <div class="col-lg">
+                <div class="mb-1">
+                    <label for="category" class="form-label">Категория</label>
+                    <input type="text" class="form-control" th:field="*{category}" id="category"
+                           placeholder="Введите категорию продукта">
+                </div>
+            </div>
+            <div class="col-lg">
+                <div class="mb-1">
+                    <label for="price" class="form-label">Цена</label>
+                    <input type="number" class="form-control" th:field="*{price}" id="price"
+                           placeholder="Введите цену продукта">
+                </div>
+            </div>
+            <div class="col-lg">
+                <div class="mb-1">
+                    <label for="ram" class="form-label">Оперативная память</label>
+                    <input type="text" class="form-control" th:field="*{ram}" id="ram"
+                           placeholder="Введите кол. оперативной памяти">
+                </div>
+            </div>
+            <div class="col-lg">
+                <div class="mb-1">
+                    <label for="cpu" class="form-label">Процессор</label>
+                    <input type="text" class="form-control" th:field="*{cpu}" id="cpu"
+                           placeholder="Введите название процессора">
+                </div>
+            </div>
+            <div class="col-lg">
+                <div class="mb-1">
+                    <label for="cores" class="form-label">Кол. ядер</label>
+                    <input type="number" class="form-control" th:field="*{cores}" id="cores"
+                           placeholder="Введите кол. яде процессора">
+                </div>
+            </div>
+            <div class="col-lg">
+                <div class="mb-1">
+                    <label for="storage" class="form-label">Память</label>
+                    <input type="number" class="form-control" th:field="*{storage}" id="storage"
+                           placeholder="Введите размер памяти">
+                </div>
+            </div>
+            <div class="col-lg">
+                <div class="mb-1">
+                    <label for="descriptionId" class="form-label">Номер описания</label>
+                    <input type="number" class="form-control" th:field="*{descriptionId}" id="descriptionId"
+                           placeholder="Введите номер описания продукта">
+                </div>
+            </div>
+            <div class="container mt-3" style="width: 600px;">
+                <div class="col-lg">
+                    <input type="submit" class="btn btn-primary" value="Внести изменения">
+                    <a class="p-2 text-dark" href="/description-create">Создать описание для этого продукта</a>
+                </div>
+            </div>
+        </div>
+</form>
+</body>
+</html>
