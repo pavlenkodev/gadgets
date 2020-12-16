@@ -3,44 +3,10 @@
     <title>Search</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
-<div class="container mt-3"></div>
 <body xmlns:th="http://www.w3.org/1999/xhtml">
-<div>
-    <nav class="navbar navbar-expand-lg navbar navbar-dark bg-primary">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="/products">Gadgets</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="/category-laptops">Ноутбуки</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="/category-smartphones">Смартфоны</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="/category-tablets">Планшеты</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="/product-create">Добавить новый продукт</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="/description-create">Добавить описание</a>
-                    </li>
-                </ul>
-                <form class="d-flex" method="post" action="/search-by-name">
-                    <input class="form-control me-2" type="text" name="name" placeholder="Искать по названию"
-                           aria-label="Search">
-                    <button class="btn btn-outline-dark" type="submit">Поиск</button>
-                </form>
-            </div>
-        </div>
-    </nav>
-</div>
+
+<div th:insert="~{fragments/fullnavbar :: copy}"></div>
+
 <div class="container mt-2">
     <div th:switch="${filters}">
         <h2 th:case="null">Ничего не найдено!</h2>
@@ -49,22 +15,22 @@
                 <table class="table">
                     <thead>
                     <tr>
-                        <!--                                <th>Изображение</th>-->
+                        <th>Изображение</th>
                         <th>Название</th>
                         <th>Брэнд</th>
                         <th>Категория</th>
                         <th>Цена</th>
-                        <th>Оперативная память</th>
+                        <th>ОЗУ</th>
                         <th>Процессор</th>
                         <th>Кол. ядер</th>
-                        <th>Встроенная память</th>
+                        <th>ПЗУ</th>
                         <th>Описание</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr th:each="filter : ${filters}">
                         <td th:hidden="${filter.id}"></td>
-                        <!--                                <td th:image="${filter.image}"></td>-->
+                        <td><img th:src="${filter.image}" style="width: 150px; height: 150px"></td>
                         <td th:text="${filter.name}"></td>
                         <td th:text="${filter.vendor}"></td>
                         <td th:text="${filter.category}"></td>

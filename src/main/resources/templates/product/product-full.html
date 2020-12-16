@@ -9,24 +9,7 @@
 
 <div th:insert="~{fragments/fullnavbar :: copy}"></div>
 
-<div class="container-fluid"><h4>Фильтр</h4></div>
-<form method="post" action="/product-filter">
-    <div class="container-fluid">
-        <input type="text" name="category" placeholder="Введите категорию">
-        <input type="text" name="vendor" placeholder="Введите брэнд">
-        <input type="number" name="minPrice" placeholder="Мин. цена">
-        <input type="number" name="maxPrice" placeholder="Макс. цена">
-        <input type="number" name="minRam" placeholder="Мин. ОЗУ">
-        <input type="number" name="maxRam" placeholder="Макс. ОЗУ">
-        <input type="text" name="cpu" placeholder="Процессор">
-        <input type="number" name="minStorage" placeholder="Мин. память">
-        <input type="number" name="maxStorage" placeholder="Макс. память">
-        <button type="submit" class="btn btn-primary">Искать!</button>
-
-    </div>
-</form>
-
-<div th:switch="${products}">
+<div th:switch="${fullView}">
     <h2 th:case="null">Ничего не найдено!</h2>
     <div th:case="*">
         <div class="container-fluid">
@@ -36,19 +19,28 @@
                     <th>Изображение</th>
                     <th>Название</th>
                     <th>Брэнд</th>
+                    <th>Категория</th>
                     <th>Цена</th>
+                    <th>ОЗУ</th>
+                    <th>Процессор</th>
+                    <th>Ядер</th>
                     <th>ПЗУ</th>
+                    <th>Описание</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="product : ${products}">
+                <tr th:each="product : ${fullView}">
                     <td th:hidden="${product.id}"></td>
                     <td><img th:src="${product.image}" style="width: 150px; height: 150px"></td>
                     <td th:text="${product.name}"></td>
                     <td th:text="${product.vendor}"></td>
+                    <td th:text="${product.category}"></td>
                     <td th:text="${product.price}"></td>
+                    <td th:text="${product.ram}"></td>
+                    <td th:text="${product.cpu}"></td>
+                    <td th:text="${product.cores}"></td>
                     <td th:text="${product.storage}"></td>
-                    <td><a th:href="@{product-full/{id}(id=${product.id})}">Полное описание</a></td>
+                    <td th:text="${product.descriptionId}"></td>
                     <td><a th:href="@{product-update/{id}(id=${product.id})}">Изменить</a></td>
                     <td><a th:href="@{product-delete/{id}(id=${product.id})}">Удалить</a></td>
                 </tr>
@@ -57,6 +49,3 @@
         </div>
     </div>
 </div>
-</div>
-</body>
-</html>

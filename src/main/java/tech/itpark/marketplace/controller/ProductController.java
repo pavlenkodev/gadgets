@@ -11,6 +11,7 @@ import tech.itpark.marketplace.model.Product;
 import tech.itpark.marketplace.repository.ProductRepository;
 import tech.itpark.marketplace.manager.ProductManager;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -57,18 +58,6 @@ public class ProductController {
         return "redirect:/products";
     }
 
-//    @GetMapping("/filter-form")
-//    public String filterForm(@RequestParam String fcategory,
-//                             @RequestParam String fendor,
-//                             @RequestParam int minPrice,
-//                             @RequestParam int maxPrice,
-//                             @RequestParam int minRam,
-//                             @RequestParam int maxRam,
-//                             @RequestParam String cpu,
-//                             @RequestParam int minStorage){
-//        return ("/filter-form");
-//    }
-
     @PostMapping("/product-filter")
     public String filter(@RequestParam String category,
                          @RequestParam String vendor,
@@ -85,8 +74,6 @@ public class ProductController {
         final var filters = productManager.filter(category, vendor, minPrice, maxPrice, minRam, maxRam, cpu, minStorage, maxStorage);
         model.addAttribute("filters", filters);
 
-//       model.addAttribute("filters", filters);
-//          filters = .productService.findAll();
         return "product/product-filter";
     }
 
@@ -130,5 +117,14 @@ public class ProductController {
     public String removeById(@PathVariable("id") Long id) {
         productManager.removeById(id);
         return "redirect:/products";
+    }
+
+    @GetMapping("product-full/{id}")
+    public String fullView(@PathVariable long id, Model model){
+//        List<Product> products = new ArrayList<>();
+        final var fullView = productManager.findById(id);
+        model.addAttribute("fullView", fullView);
+
+        return "product/product-full";
     }
 }
