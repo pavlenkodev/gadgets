@@ -18,9 +18,8 @@ public class DescriptionController {
     }
 
     @GetMapping("/descriptions")
-    public String findAll(Model model){
-        final var descriptions = descriptionManager.findAll();
-        model.addAttribute("descriptions", descriptions);
+    public String findAll(Model model) {
+        model.addAttribute("descriptions", descriptionManager.findAll());
         return "description/description-list";
 
     }
@@ -40,16 +39,16 @@ public class DescriptionController {
     public String updateDescriptionForm(
             @PathVariable("id") Long id,
             Model model
-    ){
-        Description description = descriptionManager.findById(id); ////???????warn??????
-        model.addAttribute("description", description);
+    ) {
+        model.addAttribute("description", descriptionManager.findById(id));
         return "description/description-update";
     }
+
     @PostMapping("/description-update")
-    public String updateDescription (Description description){
+    public String updateDescription(Description description) {
         descriptionManager.save(description);
-        return "redirect:/descriptions";   ///???????
-     }
+        return "redirect:/descriptions";
+    }
 
     @GetMapping("description-delete/{id}")
     public String removeById(@PathVariable("id") Long id) {

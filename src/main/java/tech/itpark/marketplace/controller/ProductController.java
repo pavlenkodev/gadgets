@@ -7,12 +7,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import tech.itpark.marketplace.manager.ProductManager;
 import tech.itpark.marketplace.model.Product;
 import tech.itpark.marketplace.repository.ProductRepository;
-import tech.itpark.marketplace.manager.ProductManager;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Controller
 public class ProductController {
@@ -27,8 +24,7 @@ public class ProductController {
 
     @GetMapping("/products")
     public String findAll(Model model) {
-        List<Product> products = productManager.findAll();
-        model.addAttribute("products", products);
+        model.addAttribute("products", productManager.findAll());
         return "product/product-list";
     }
 
@@ -44,11 +40,8 @@ public class ProductController {
     }
 
     @GetMapping("/product-update/{id}")
-    public String updateProductForm(
-            @PathVariable("id") Long id,
-            Model model) {
-        Product product = productManager.findById(id);
-        model.addAttribute("product", product);
+    public String updateProductForm(@PathVariable("id") Long id, Model model) {
+        model.addAttribute("product", productManager.findById(id));
         return "product/product-update";
     }
 
@@ -59,57 +52,47 @@ public class ProductController {
     }
 
     @PostMapping("/product-filter")
-    public String filter(@RequestParam String category,
-                         @RequestParam String vendor,
-                         @RequestParam int minPrice,
-                         @RequestParam int maxPrice,
-                         @RequestParam int minRam,
-                         @RequestParam int maxRam,
-                         @RequestParam String cpu,
-                         @RequestParam int minStorage,
-                         @RequestParam int maxStorage,
+    public String filter(@RequestParam(required = false) String category,
+                         @RequestParam(required = false) String vendor,
+                         @RequestParam(required = false) String minPrice,
+                         @RequestParam(required = false) String maxPrice,
+                         @RequestParam(required = false) String minRam,
+                         @RequestParam(required = false) String maxRam,
+                         @RequestParam(required = false) String cpu,
+                         @RequestParam(required = false) String minStorage,
+                         @RequestParam(required = false) String maxStorage,
                          Model model
     ) {
-
-        final var filters = productManager.filter(category, vendor, minPrice, maxPrice, minRam, maxRam, cpu, minStorage, maxStorage);
-        model.addAttribute("filters", filters);
-
+        model.addAttribute("filters", productManager.filter(category, vendor, minPrice, maxPrice, minRam, maxRam, cpu, minStorage, maxStorage));
         return "product/product-filter";
     }
 
     @GetMapping("/category-smartphones")
     public String findByCategorySmartphones(String category, Model model) {
         category = "smartphones";
-        final var byCategory = productManager.findByCategory(category);
-        model.addAttribute("byCategory", byCategory);
-
+        model.addAttribute("byCategory", productManager.findByCategory(category));
         return "category/category-smartphones";
     }
 
     @GetMapping("/category-tablets")
     public String findByCategoryTablets(String category, Model model) {
         category = "tablets";
-        final var byCategory = productManager.findByCategory(category);
-        model.addAttribute("byCategory", byCategory);
-
+        model.addAttribute("byCategory", productManager.findByCategory(category));
         return "category/category-tablets";
 
-    }
-
-    @PostMapping("/search-by-name")
-    public String searchByName(@RequestParam String name, Model model) {
-        var byNameIgnoreCase = productManager.findByNameIgnoreCase(name);
-        model.addAttribute("byNameIgnoreCase", byNameIgnoreCase);
-        return "product/search-by-name";
     }
 
     @GetMapping("/category-laptops")
     public String findByCategoryLaptops(String category, Model model) {
         category = "laptops";
-        final var byCategory = productManager.findByCategory(category);
-        model.addAttribute("byCategory", byCategory);
-
+        model.addAttribute("byCategory", productManager.findByCategory(category));
         return "category/category-laptops";
+    }
+
+    @PostMapping("/search-by-name")
+    public String searchByName(@RequestParam String name, Model model) {
+        model.addAttribute("byNameIgnoreCase", productManager.findByNameIgnoreCase(name));
+        return "product/search-by-name";
     }
 
 
@@ -120,11 +103,8 @@ public class ProductController {
     }
 
     @GetMapping("product-full/{id}")
-    public String fullView(@PathVariable long id, Model model){
-//        List<Product> products = new ArrayList<>();
-        final var fullView = productManager.findById(id);
-        model.addAttribute("fullView", fullView);
-
+    public String fullView(@PathVariable long id, Model model) {
+        model.addAttribute("fullView", productManager.findById(id));
         return "product/product-full";
     }
 }

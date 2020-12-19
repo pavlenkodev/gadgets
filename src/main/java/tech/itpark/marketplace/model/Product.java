@@ -10,7 +10,7 @@ import javax.persistence.*;
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
     @Column(name = "image")
     private String image;
     @Column(name = "name")
@@ -29,7 +29,7 @@ public class Product {
     private int cores;
     @Column(name="storage")
     private  int storage;
-    @OneToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name= "description_id")
     private Description descriptionId;
 
