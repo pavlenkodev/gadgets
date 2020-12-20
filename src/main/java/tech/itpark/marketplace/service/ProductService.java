@@ -1,4 +1,4 @@
-package tech.itpark.marketplace.manager;
+package tech.itpark.marketplace.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.domain.Specification;
@@ -11,11 +11,11 @@ import tech.itpark.marketplace.specifications.ProductSpecification;
 import java.util.List;
 
 @Service
-public class ProductManager {
+public class ProductService {
     private final ProductRepository productRepository;
 
     @Autowired
-    public ProductManager(ProductRepository productRepository) {
+    public ProductService(ProductRepository productRepository) {
         this.productRepository = productRepository;
     }
 
@@ -79,7 +79,6 @@ public class ProductManager {
         if (!maxStorage.isBlank()) {
             parsMaxStorage = Integer.parseInt(maxStorage);
         }
-
 
         ProductSpecification spec1 =
                 new ProductSpecification(new ProductSearchCriteria("category", ":", category));

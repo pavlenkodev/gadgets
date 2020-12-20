@@ -1,4 +1,4 @@
-package tech.itpark.marketplace.manager;
+package tech.itpark.marketplace.service;
 
 import org.springframework.stereotype.Service;
 import tech.itpark.marketplace.model.Description;
@@ -7,11 +7,11 @@ import tech.itpark.marketplace.repository.DescriptionRepository;
 import java.util.List;
 
 @Service
-public class DescriptionManager {
+public class DescriptionService {
 
     private final DescriptionRepository descriptionRepository;
 
-    public DescriptionManager(DescriptionRepository descriptionRepository) {
+    public DescriptionService(DescriptionRepository descriptionRepository) {
         this.descriptionRepository = descriptionRepository;
     }
 
