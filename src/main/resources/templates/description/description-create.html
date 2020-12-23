@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Create Description</title>
@@ -9,13 +9,13 @@
 
 <div th:insert="~{fragments/fullnavbar :: copy}"></div>
 
-<form action="#" th:action="@{/description-create}" th:object="${description}" method="post">
+<form th:action="@{/description-create}" th:object="${description}" th:method="POST">
     <div class="container">
         <div class="col-lg">
             <div class="mb-1">
                 <label for="OperationSystem" class="form-label">Операционная система</label>
                 <input type="text" class="form-control" th:field="*{OperationSystem}" id="OperationSystem"
-                       placeholder="Укажите операционную систему">
+                       placeholder="Укажите операционную систему"/>
             </div>
         </div>
         <div class="col-lg">

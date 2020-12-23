@@ -1,5 +1,6 @@
 package tech.itpark.marketplace.service;
 
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import tech.itpark.marketplace.model.Description;
 import tech.itpark.marketplace.repository.DescriptionRepository;
@@ -7,13 +8,10 @@ import tech.itpark.marketplace.repository.DescriptionRepository;
 import java.util.List;
 
 @Service
+@AllArgsConstructor
 public class DescriptionService {
 
     private final DescriptionRepository descriptionRepository;
-
-    public DescriptionService(DescriptionRepository descriptionRepository) {
-        this.descriptionRepository = descriptionRepository;
-    }
 
     public Description findById(Long id) {
         return descriptionRepository.getOne(id);
@@ -31,3 +29,4 @@ public class DescriptionService {
         descriptionRepository.deleteById(id);
     }
 }
+

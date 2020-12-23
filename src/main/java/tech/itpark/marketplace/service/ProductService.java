@@ -1,6 +1,6 @@
 package tech.itpark.marketplace.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import tech.itpark.marketplace.model.Product;
@@ -8,16 +8,11 @@ import tech.itpark.marketplace.repository.ProductRepository;
 import tech.itpark.marketplace.specifications.ProductSearchCriteria;
 import tech.itpark.marketplace.specifications.ProductSpecification;
 
-import java.util.List;
-
 @Service
+@AllArgsConstructor
 public class ProductService {
     private final ProductRepository productRepository;
 
-    @Autowired
-    public ProductService(ProductRepository productRepository) {
-        this.productRepository = productRepository;
-    }
 
     public Product findById(Long id) {
         return productRepository.getOne(id);
@@ -44,15 +39,15 @@ public class ProductService {
         return productRepository.findByNameContainingIgnoreCase(name);
     }
 
-    public List<Product> filter(String category,
-                                String vendor,
-                                String minPrice,
-                                String maxPrice,
-                                String minRam,
-                                String maxRam,
-                                String cpu,
-                                String minStorage,
-                                String maxStorage) {
+    public Iterable<Product> filter(String category,
+                                    String vendor,
+                                    String minPrice,
+                                    String maxPrice,
+                                    String minRam,
+                                    String maxRam,
+                                    String cpu,
+                                    String minStorage,
+                                    String maxStorage) {
 
         int parsMinPrice = 0;
         int parsMaxPrice = 7000000;

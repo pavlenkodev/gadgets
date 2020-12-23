@@ -1,5 +1,6 @@
 package tech.itpark.marketplace.controller;
 
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,13 +10,10 @@ import tech.itpark.marketplace.model.Description;
 import tech.itpark.marketplace.service.DescriptionService;
 
 @Controller
+@AllArgsConstructor
 public class DescriptionController {
 
     private final DescriptionService descriptionService;
-
-    public DescriptionController(DescriptionService descriptionService) {
-        this.descriptionService = descriptionService;
-    }
 
     @GetMapping("/descriptions")
     public String findAll(Model model) {

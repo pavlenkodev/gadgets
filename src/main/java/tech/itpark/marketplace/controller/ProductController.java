@@ -1,26 +1,19 @@
 package tech.itpark.marketplace.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import tech.itpark.marketplace.service.ProductService;
 import tech.itpark.marketplace.model.Product;
-import tech.itpark.marketplace.repository.ProductRepository;
+import tech.itpark.marketplace.service.ProductService;
 
 @Controller
+@AllArgsConstructor
 public class ProductController {
     private final ProductService productService;
-    private final ProductRepository productRepository;
-
-    @Autowired
-    public ProductController(ProductService productService, ProductRepository productRepository) {
-        this.productService = productService;
-        this.productRepository = productRepository;
-    }
 
     @GetMapping("/products")
     public String findAll(Model model) {

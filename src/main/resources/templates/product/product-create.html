@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Create product</title>
@@ -10,80 +10,80 @@
 
 <div th:insert="~{fragments/fullnavbar :: copy}"></div>
 
-<form action="#" th:action="@{/product-create}" th:object="${product}" method="post">
+<form th:method="POST" th:action="@{/product-create}" th:object="${product}">
     <div class="container mt-5">
         <div class="col-lg">
             <div class="mb-1">
                 <label for="image" class="form-label">Изображение</label>
                 <input type="text" class="form-control" th:field="*{image}" id="image"
-                       placeholder="Добавте ссылку на изображение продукта">
+                       placeholder="Добавте ссылку на изображение продукта"/>
             </div>
         </div>
         <div class="col-lg">
             <div class="mb-1">
                 <label for="name" class="form-label">Название</label>
                 <input type="text" class="form-control" th:field="*{name}" id="name"
-                       placeholder="Введите название продукта">
+                       placeholder="Введите название продукта"/>
             </div>
         </div>
         <div class="col-lg">
             <div class="mb-1">
                 <label for="vendor" class="form-label">Брэнд</label>
-                <input type="text" class="form-control" th:field="*{vendor}" id="vendor" placeholder="Введите брэнд">
+                <input type="text" class="form-control" th:field="*{vendor}" id="vendor" placeholder="Введите брэнд"/>
             </div>
         </div>
         <div class="col-lg">
             <div class="mb-1">
                 <label for="category" class="form-label">Категория</label>
                 <input type="text" class="form-control" th:field="*{category}" id="category"
-                       placeholder="Введите категорию продукта">
+                       placeholder="Введите категорию продукта"/>
             </div>
         </div>
         <div class="col-lg">
             <div class="mb-1">
                 <label for="price" class="form-label">Цена</label>
                 <input type="number" class="form-control" th:field="*{price}" id="price"
-                       placeholder="Введите цену продукта">
+                       placeholder="Введите цену продукта"/>
             </div>
         </div>
         <div class="col-lg">
             <div class="mb-1">
                 <label for="ram" class="form-label">Оперативная память</label>
                 <input type="text" class="form-control" th:field="*{ram}" id="ram"
-                       placeholder="Введите кол. оперативной памяти">
+                       placeholder="Введите кол. оперативной памяти"/>
             </div>
         </div>
         <div class="col-lg">
             <div class="mb-1">
                 <label for="cpu" class="form-label">Процессор</label>
                 <input type="text" class="form-control" th:field="*{cpu}" id="cpu"
-                       placeholder="Введите название процессора">
+                       placeholder="Введите название процессора"/>
             </div>
         </div>
         <div class="col-lg">
             <div class="mb-1">
                 <label for="cores" class="form-label">Кол. ядер</label>
                 <input type="number" class="form-control" th:field="*{cores}" id="cores"
-                       placeholder="Введите кол. яде процессора">
+                       placeholder="Введите кол. яде процессора"/>
             </div>
         </div>
         <div class="col-lg">
             <div class="mb-1">
                 <label for="storage" class="form-label">Память</label>
                 <input type="number" class="form-control" th:field="*{storage}" id="storage"
-                       placeholder="Введите размер памяти">
+                       placeholder="Введите размер памяти"/>
             </div>
         </div>
         <div class="col-lg">
             <div class="mb-1">
                 <label for="descriptionId" class="form-label">Номер описания</label>
                 <input type="number" class="form-control" th:field="*{descriptionId}" id="descriptionId"
-                       placeholder="Введите номер описания продукта">
+                       placeholder="Введите номер описания продукта"/>
             </div>
         </div>
         <div class="container mt-3" style="width: 600px;">
             <div class="col-lg">
-                <input type="submit" class="btn btn-primary" value="Создать продукт">
+                <input type="submit" class="btn btn-primary" value="Создать продукт"/>
                 <a class="p-2 text-dark" href="/description-create">Создать описание для этого продукта</a>
             </div>
         </div>
