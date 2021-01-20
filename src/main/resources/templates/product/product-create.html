@@ -17,6 +17,8 @@
                 <label for="image" class="form-label">Изображение</label>
                 <input type="text" class="form-control" th:field="*{image}" id="image"
                        placeholder="Добавте ссылку на изображение продукта"/>
+                <div style="color:red" th:if="${#fields.hasErrors('image')}" th:errors="*{image}">Image error</div>
+
             </div>
         </div>
         <div class="col-lg">
@@ -24,12 +26,14 @@
                 <label for="name" class="form-label">Название</label>
                 <input type="text" class="form-control" th:field="*{name}" id="name"
                        placeholder="Введите название продукта"/>
+                <div style="color:red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name error</div>
             </div>
         </div>
         <div class="col-lg">
             <div class="mb-1">
                 <label for="vendor" class="form-label">Брэнд</label>
                 <input type="text" class="form-control" th:field="*{vendor}" id="vendor" placeholder="Введите брэнд"/>
+                <div style="color:red" th:if="${#fields.hasErrors('vendor')}" th:errors="*{vendor}">Vendor error</div>
             </div>
         </div>
         <div class="col-lg">
@@ -37,13 +41,17 @@
                 <label for="category" class="form-label">Категория</label>
                 <input type="text" class="form-control" th:field="*{category}" id="category"
                        placeholder="Введите категорию продукта"/>
+                <div style="color:red" th:if="${#fields.hasErrors('category')}" th:errors="*{category}">Category error
+                </div>
+
             </div>
         </div>
         <div class="col-lg">
             <div class="mb-1">
                 <label for="price" class="form-label">Цена</label>
-                <input type="number" class="form-control" th:field="*{price}" id="price"
+                <input type="text" class="form-control" th:field="*{price}" id="price"
                        placeholder="Введите цену продукта"/>
+                <div style="color:red" th:if="${#fields.hasErrors('price')}" th:errors="*{price}">Price error</div>
             </div>
         </div>
         <div class="col-lg">
@@ -51,6 +59,7 @@
                 <label for="ram" class="form-label">Оперативная память</label>
                 <input type="text" class="form-control" th:field="*{ram}" id="ram"
                        placeholder="Введите кол. оперативной памяти"/>
+                <div style="color:red" th:if="${#fields.hasErrors('ram')}" th:errors="*{ram}">Ram error</div>
             </div>
         </div>
         <div class="col-lg">
@@ -58,27 +67,32 @@
                 <label for="cpu" class="form-label">Процессор</label>
                 <input type="text" class="form-control" th:field="*{cpu}" id="cpu"
                        placeholder="Введите название процессора"/>
+                <div style="color:red" th:if="${#fields.hasErrors('cpu')}" th:errors="*{cpu}">Cpu error</div>
             </div>
         </div>
         <div class="col-lg">
             <div class="mb-1">
                 <label for="cores" class="form-label">Кол. ядер</label>
-                <input type="number" class="form-control" th:field="*{cores}" id="cores"
+                <input type="text" class="form-control" th:field="*{cores}" id="cores"
                        placeholder="Введите кол. яде процессора"/>
+                <div style="color:red" th:if="${#fields.hasErrors('cores')}" th:errors="*{cores}">Core error</div>
             </div>
         </div>
         <div class="col-lg">
             <div class="mb-1">
                 <label for="storage" class="form-label">Память</label>
-                <input type="number" class="form-control" th:field="*{storage}" id="storage"
+                <input type="text" class="form-control" th:field="*{storage}" id="storage"
                        placeholder="Введите размер памяти"/>
+                <div style="color:red" th:if="${#fields.hasErrors('storage')}" th:errors="*{storage}">Storage error
+                </div>
             </div>
         </div>
         <div class="col-lg">
             <div class="mb-1">
                 <label for="descriptionId" class="form-label">Номер описания</label>
-                <input type="number" class="form-control" th:field="*{descriptionId}" id="descriptionId"
+                <input type="text" class="form-control" th:field="*{descriptionId}" id="descriptionId"
                        placeholder="Введите номер описания продукта"/>
+                <div style="color:red" th:if="${#fields.hasErrors('descriptionId')}" th:errors="*{descriptionId}">Description error</div>
             </div>
         </div>
         <div class="container mt-3" style="width: 600px;">

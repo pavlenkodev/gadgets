@@ -3,12 +3,15 @@ package tech.itpark.marketplace.controller;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import tech.itpark.marketplace.model.Product;
 import tech.itpark.marketplace.service.ProductService;
+
+import javax.validation.Valid;
 
 @Controller
 @AllArgsConstructor
@@ -27,7 +30,11 @@ public class ProductController {
     }
 
     @PostMapping("/product-create")
-    public String createProduct(Product product) {
+    public String createProduct(@Valid Product product,
+                                BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "product/product-create";
+        }
         productService.save(product);
         return "redirect:/products";
     }
@@ -39,7 +46,10 @@ public class ProductController {
     }
 
     @PostMapping("/product-update")
-    public String updateProduct(Product product) {
+    public String updateProduct(@Valid Product product, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "product/product-update";
+        }
         productService.save(product);
         return "redirect:/products";
     }

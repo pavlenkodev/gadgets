@@ -16,6 +16,7 @@
                 <label for="OperationSystem" class="form-label">Операционная система</label>
                 <input type="text" class="form-control" th:field="*{OperationSystem}" id="OperationSystem"
                        placeholder="Укажите операционную систему"/>
+                <div style="color:red" th:if="${#fields.hasErrors('operationSystem')}" th:errors="*{operationSystem}">OS name error</div>
             </div>
         </div>
         <div class="col-lg">
@@ -23,6 +24,7 @@
                 <label for="color" class="form-label">Цвет</label>
                 <input type="text" class="form-control" th:field="*{color}" id="color"
                        placeholder="Укажите цвет">
+                <div style="color:red" th:if="${#fields.hasErrors('color')}" th:errors="*{color}">Color name error</div>
             </div>
         </div>
         <div class="col-lg">
@@ -30,6 +32,7 @@
                 <label for="model" class="form-label">Модель</label>
                 <input type="text" class="form-control" th:field="*{model}" id="model"
                        placeholder="Укажите модель">
+                <div style="color:red" th:if="${#fields.hasErrors('model')}" th:errors="*{model}">Model name error</div>
             </div>
         </div>
         <div class="col-lg">
@@ -37,6 +40,7 @@
                 <label for="screenSize" class="form-label">Размер экрана</label>
                 <input type="text" class="form-control" th:field="*{screenSize}" id="screenSize"
                        placeholder="Укажите размер экрана">
+                <div style="color:red" th:if="${#fields.hasErrors('screenSize')}" th:errors="*{screenSize}">Screen size name error</div>
             </div>
         </div>
         <div class="col-lg">
@@ -44,6 +48,7 @@
                 <label for="resolution" class="form-label">Разрешение экрана</label>
                 <input type="text" class="form-control" th:field="*{resolution}" id="resolution"
                        placeholder="Укажите разрешение экрана">
+                <div style="color:red" th:if="${#fields.hasErrors('resolution')}" th:errors="*{resolution}">Resolution name error</div>
             </div>
         </div>
         <div class="container mt-3" style="width: 300px;">
